@@ -22,16 +22,12 @@ async function bootstrap() {
     credentials: true,
   });
 
-  // app.use(session({
-  //   secret: "secretfdfdfdfdfdfdfdfgrthtrhgdsf",
-  //   saveUninitialized: false,
-  //   resave: false,
-  //   cookie: {
-  //     maxAge: 1000 * 60
-  //   }
-  // }));
-  // app.use(passport.initialize());
-  // app.use(passport.session());
+  app.enableCors({
+    origin: ['https://knack-freelancer.onrender.com','http://localhost:3000'], // Allow requests from this origin
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Allowed methods
+    credentials: true, // Allow cookies if needed
+    allowedHeaders: 'Content-Type, Authorization', // Allowed headers
+  });
 
   await app.listen(8081);
 }
